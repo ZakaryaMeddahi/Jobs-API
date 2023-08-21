@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Handjet:wght@300;400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box
+}
+
+body {
+  font-family: 'inter';
+  font-size: 15px;
+  background-color: #f9fafc;
+}
+
+header {
+  height: 50px;
+  padding: 20px;
+  padding: 0 80px;
+  background-color:#3498db;
+  display: flex;
+  align-items: center;
+  color: #C8B6FF;
+  text-shadow: 2px 2px blue;
+}
+
+header h2 {
+  font-family: 'Handjet';
+}
+
+div {
+  height: calc(100vh - 50px);
+}
+
+form {
+  width: 400px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #BBD0FF;
+  border-radius: 20px;
+  position: relative;
+  left: calc(50% - 200px);
+  top: calc(50vh - 280px);
+}
+
+.login {
+  padding: 70px 50px;
+}
+
+form h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+label {
+  font-size: 16px;
+  text-align: left;
+}
+
+input {
+  padding: 10px;
+  outline-color: blue;
+  border: 1.5px solid transparent;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+form span {
+  font-size: 14px;
+}
+
+form span:not(:last-child) {
+  font-size: 12px;
+  color: red;
+  margin: 0 10px 20px;
+  visibility: hidden;
+}
+
+button {
+  font-weight: 550;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #B8C0FF;
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 4px 12px;
+  cursor: pointer;
+}
+
+

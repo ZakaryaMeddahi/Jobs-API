@@ -12,7 +12,12 @@ const register = async (req, res, next) => {
     const user = new User({ ...req.body });
     await user.save();
     const token = user.createJWT();
-    res.status(StatusCodes.CREATED).json({ user: { username: user.username }, token});
+    res.cookie('token', token, {
+      httpOnly: true,
+      maxAge  :  1000 * 60 * 60
+    });
+    res.status(StatusCodes.CREATED)
+    .json({ user: { username: user.username }, token});
   } catch (err) {
     console.error(err);
     next(err);
@@ -32,12 +37,26 @@ const login = async (req, res, next) => {
   }
   // Using Custom Middleware To Compare 
   // Provided Password With Hashed One
-  if(!user.comparePassword(password)) {
+  const passwordStatus = await user.comparePassword(password);
+  if(!passwordStatus) {
     const err = new UnauthorizedError('Incorrect Password');
     return next(err);
   }
   const token = user.createJWT();
+  res.cookie('token', token, {
+    httpOnly : true,
+    maxAge  :  1000 * 60 * 60
+  });
   res.status(StatusCodes.OK).json({ user: { username: user.username }, token });
 }
 
-module.exports = { register, login }
+const logout = (req, res) => {
+  res.cookie('token', '', { maxAge: 1 });
+  res.redirect('/register');
+}
+
+module.exports = { 
+  register, 
+  login,
+  logout
+}
