@@ -1,15 +1,19 @@
 const { StatusCodes } = require("http-status-codes");
 const Job = require("../models/Job");
 const { NotFoundError, BadRequestError } = require("../errors");
-const User = require("../models/User");
 
 // Retrieve All Jobs That Has Created By The User
 const getAllJobs = async (req, res) => {
-  const jobs = await Job.find({ createdBy:req.user.userId });
+  const jobs = await Job.find({ company: { 
+    $regex: req.query.company, $options: 'i' 
+  }, createdBy:req.user.userId });
+  if(!jobs) {
+    res.status(StatusCodes.NOT_FOUND).json({ message: 'Error' });
+  }
   res.status(StatusCodes.OK).json({ jobs });
 }
 
-// Retrieve Single Job Related to Specific User (Can't Other User's Jobs)
+// Retrieve Single Job Related to Specific User (Can't get Other User's Jobs)
 const getJob = async (req, res, next) => {
   try {
     const { params: { id: jobId }, user: { userId }} = req;
@@ -45,7 +49,7 @@ const updateJob = async (req, res, next) => {
     if(modifiedJob.company.length === 0 || modifiedJob.position.length === 0) {
       return next(new BadRequestError('Company and Position are required fields'));
     }
-    const updatedJob = await Job.findOneAndUpdate({ jobId, createdBy: userId }, modifiedJob, { 
+    const updatedJob = await Job.findOneAndUpdate({ _id: jobId, createdBy: userId }, modifiedJob, { 
       new: true, 
       runValidators: true 
     });

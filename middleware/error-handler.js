@@ -20,7 +20,7 @@ const errorHandler = (err, req, res, next) => {
       }
       message += `${fields[i]}.`;
     }
-    customError.message = `Please provide ${message}`;
+    customError.message = `Please provide valide ${message}`;
     customError.statusCode = StatusCodes.BAD_REQUEST;
   }
   // Send Duplicate Email Error (Email Already Exist In The DB)

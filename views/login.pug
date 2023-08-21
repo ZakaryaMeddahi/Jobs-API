@@ -1,0 +1,25 @@
+doctype html 
+html 
+  head 
+    link(rel="stylesheet", href="./style/auth.css")
+    title Jobs API UI
+
+  body 
+    header 
+      h2 Jobs API
+    div
+      form.login
+        h2 Login
+        label(for="email") Email:
+        input(type="email" id="email")
+        span.email-message invalid email
+        label(for="password") Password:
+        input(type="password" id="password")
+        span.password-message incorrect password
+        button#login Log In
+        span Don't have account? 
+          a(href="/register") Register
+    
+    //- script(script-src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js")
+    script(src="./logic/auth.js" type="module")
+      

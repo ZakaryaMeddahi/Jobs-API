@@ -1,0 +1,27 @@
+doctype html 
+html 
+  head 
+    link(rel="stylesheet", href="./style/auth.css")
+    title Jobs API UI
+
+  body 
+    header 
+      h2 Jobs API
+    div 
+      form.register
+        h2 Register
+        label(for="username") Username:
+        input(type="text" id="username")
+        span.username-message invalid username
+        label(for="email") Email:
+        input(type="email" id="email")
+        span.email-message invalid email
+        label(for="password") Password:
+        input(type="password" id="password")
+        span.password-message invalid password
+        button#register Register
+        span Already have an account?
+          a(href="/login") Log In
+
+    script(src="./logic/auth.js" type="module")
+    
