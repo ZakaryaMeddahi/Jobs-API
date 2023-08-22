@@ -2,10 +2,13 @@ import request from "../modules/request.js";
 
 let id;
 const user = document.querySelector('.user-chat');
+const logout = document.getElementById('logout-link');
 
-window.addEventListener('click', function(event) {
-  window.location.reload();
-});
+logout.onclick = () => {
+  window.addEventListener('click', () => {
+    window.location.reload();
+  });
+}
 
 user.onclick = () => {
   const messageBox = document.querySelector('.message-box');

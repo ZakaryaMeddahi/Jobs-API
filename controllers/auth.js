@@ -45,14 +45,14 @@ const login = async (req, res, next) => {
   const token = user.createJWT();
   res.cookie('token', token, {
     httpOnly : true,
-    maxAge  :  1000 * 60 * 60
+    maxAge  :  1000 * 60 * 60 * 24
   });
   res.status(StatusCodes.OK).json({ user: { username: user.username }, token });
 }
 
 const logout = (req, res) => {
   res.cookie('token', '', { maxAge: 1 });
-  res.redirect('/register');
+  res.redirect('/login');
 }
 
 module.exports = { 
