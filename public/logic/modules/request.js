@@ -1,7 +1,7 @@
 
 const request = (endpoint, method, data) => {
   return fetch(endpoint, {
-    method: method,
+    method,
     headers: {
       "content-type": "application/json"
     },

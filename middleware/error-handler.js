@@ -26,12 +26,12 @@ const errorHandler = (err, req, res, next) => {
   // Send Duplicate Email Error (Email Already Exist In The DB)
   if(err.code === 11000) {
     customError.message = `Dublicate value for ${ Object.keys(err.keyValue) }: Please try another one`;
-    customError.statusCode=StatusCodes.BAD_REQUEST;
+    customError.statusCode = StatusCodes.BAD_REQUEST;
   }
   // ID Syntax Is Not Correct
   if(err.name === 'CastError') {
     customError.message = `ID syntax is not correct: Provide a valide ID please`;
-    customError.statusCode=StatusCodes.BAD_REQUEST;
+    customError.statusCode = StatusCodes.BAD_REQUEST;
   }
   // res.status(StatusCodes.INTERNAL_SERVER_ERROR).json( { err } );
   res.status(customError.statusCode).json( { message: customError.message } );

@@ -1,7 +1,6 @@
-import request from "../modules/request.js";
+import request from "./modules/request.js";
 
 let id;
-const user = document.querySelector('.user-chat');
 const logout = document.getElementById('logout-link');
 
 logout.onclick = () => {
@@ -10,13 +9,9 @@ logout.onclick = () => {
   });
 }
 
-user.onclick = () => {
-  const messageBox = document.querySelector('.message-box');
-  messageBox.style.visibility = 'visible';
-};
-
 /* Display Popup */
 const newJobPopup = (status, role, event) => {
+  console.log(`Status: ${status}, Role: ${role}, Event: ${event}`);
   const value = status === 'display' ? 'block' : 'none';
   const index = role === 'add' ? 0 : role === 'update' ? 1 : 2;
   if(event) {
@@ -112,9 +107,12 @@ const removeJobCard = () => {
   const jobCard = document.querySelector(`[data-id='${id}']`);
   jobCard.remove();
   const jobsConatiner = document.getElementById('jobs-container');
-  const h2 = document.createElement('h2');
-  h2.className = 'no-jobs';
-  jobsConatiner.prepend(h2);
+  if(!jobsConatiner.childNodes.length) {
+    const h2 = document.createElement('h2');
+    h2.className = 'no-jobs';
+    h2.innerHTML = 'No Jobs';
+    jobsConatiner.prepend(h2);
+  }
 }
 /*******************/
 
@@ -211,4 +209,3 @@ getJobs.onclick = (event) => {
     throw err;
   })
 }
-/**********************/

@@ -14,10 +14,10 @@ const register = async (req, res, next) => {
     const token = user.createJWT();
     res.cookie('token', token, {
       httpOnly: true,
-      maxAge  :  1000 * 60 * 60
+      maxAge  :  1000 * 60 * 60 * 24
     });
     res.status(StatusCodes.CREATED)
-    .json({ user: { username: user.username }, token});
+    .json({ user: { id: user._id, username: user.username }, token});
   } catch (err) {
     console.error(err);
     next(err);
@@ -47,7 +47,7 @@ const login = async (req, res, next) => {
     httpOnly : true,
     maxAge  :  1000 * 60 * 60 * 24
   });
-  res.status(StatusCodes.OK).json({ user: { username: user.username }, token });
+  res.status(StatusCodes.OK).json({ user: { id: user._id, username: user.username }, token });
 }
 
 const logout = (req, res) => {

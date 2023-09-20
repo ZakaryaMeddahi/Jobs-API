@@ -1,7 +1,7 @@
-import request from "../modules/request.js";
+import request from "./modules/request.js";
 
 document.addEventListener('DOMContentLoaded', () => {
-
+  
   const login = document.getElementById('login');
   const register = document.getElementById('register');
   const fields = ['username', 'email', 'password'];
@@ -36,7 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const handleDataResponse = (data) => {
+    const id = data.user.id;
+    console.log(data.user);
     location.href = '/';
+    localStorage.setItem('id', id);
   }
 
   if(login) {
