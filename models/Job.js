@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const jobSchema = new mongoose.Schema({
   company:{
     type: String,
-    required : [true, 'Please provide a conpany name'],
+    required : [true, 'Please provide a company name'],
     maxlength: 50
   },
   position:{
@@ -19,7 +19,7 @@ const jobSchema = new mongoose.Schema({
   createdBy:{
     type: mongoose.Types.ObjectId,
     ref: 'User',
-    required: [true, 'Please Provide a user']
+    required: [true, 'Please Provide a user id']
   }
 }, { timestamps: true });
 

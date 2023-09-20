@@ -1,0 +1,422 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f9fafc;
+  font-family: 'Ubuntu';
+  font-weight: 500;
+}
+
+header {
+  height: 50px;
+  padding: 20px;
+  padding: 0 80px;
+  background-color: #3498db;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #C8B6FF;
+  text-shadow: 2px 1px blue;
+}
+
+header h2 {
+  font-family: 'Handjet';
+}
+
+ul {
+  list-style: none;
+}
+
+header a {
+  color: #f9fafc;
+  text-decoration: none;
+}
+
+header a:hover {
+  text-decoration: underline
+}
+
+.dashboard-body {
+  height: calc(100vh - 50px);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 80px;
+}
+
+.jobs-box, .chat-box {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  display: flex;
+  flex-direction: column;
+  margin: 5% 0;
+  border-radius: 5px;
+}
+
+.jobs-box {
+  width: 70%;
+  padding: 30px 20px;
+}
+
+.chat-box {
+  width: 28%;
+  padding: 20px;
+}
+
+.messages-container {
+  max-height: 95%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.messages-container::-webkit-scrollbar {
+  width: 0;
+}
+
+hr {
+  margin: 10px 0;
+}
+
+.search-box, .message-box {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  position: relative;
+}
+
+.message-box {
+  visibility: hidden;
+}
+
+.msg-container {
+  margin: 5px 10px;
+}
+
+.msg-container div {
+  display: inline-block;
+  max-width: 80%;
+  padding: 7px;
+  background-color: #3498db;
+  border-radius: 10px;
+}
+
+.recipent {
+  display: flex;
+  justify-content: end;
+}
+
+.recipent-msg {
+  background-color: #C8B6FF !important;
+}
+
+#search-input {
+  width: 500px;
+  padding: 10px 0;
+  font-size: 17px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+}
+
+#message {
+  width: 100%;
+  padding: 10px 0;
+  background-color: transparent;
+  font-size: 17px;
+  outline: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  height: fit-content;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+#new-job-button {
+  padding: 5px;
+  color: #f9fafc;
+  background-color: #3498db;
+  border-radius: 5px;
+}
+
+#jobs-container {
+  margin: 20px 0 0;
+  overflow-y: scroll;
+}
+
+#jobs-container::-webkit-scrollbar {
+  width: 0;
+}
+
+.chat-header {
+  text-transform: capitalize;
+}
+
+#chat-container {
+  height: 100%;
+}
+
+.chat {
+  height: 80%;
+  margin: 10px 0;
+  padding: 10px 7px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  position: relative;
+}
+
+.room {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.fa-arrow-right {
+  color: #3498db;
+  font-size: 1.2rem;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  transform: rotate(180deg);
+  cursor: pointer;
+}
+
+.job {
+  background-color: #f9fafc;
+  padding: 20px;
+  margin: 20px 0 0;
+  border: 1px solid blue;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.job h2, p {
+  margin-bottom: 10px;
+}
+
+.job h2 {
+  color: #3498db;
+}
+
+.job p {
+  color: grey;
+}
+
+.job span {
+  color: black;
+}
+
+.user-chat {
+  font-size: 15px;
+  background-color: #f9fafc;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+}
+
+.user-chat:hover {
+  background-color: #dee2e6;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.user-image {
+  width: 40px;
+  height: 40px;
+  background-color: lightgray;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes new-msg-animation {
+  0% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.new-message-came {
+  color: blue;
+  font-size: 0.7rem;
+  position: absolute;
+  right: 25px;
+  animation: new-msg-animation 1s infinite alternate;
+}
+
+.status {
+  background-color: rgba(144, 238, 144, 0.511);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-left: auto;
+}
+
+.online {
+  background-color: green;
+}
+
+.popup {
+  background-color: #f9fafc;
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  z-index: 9999;
+  padding: 1.5rem 2rem;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.3);
+  transform: translate(-50%, -50%);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #00000050;
+  z-index: 9000;
+}
+
+.popup svg {
+  background-color: white;
+  position: absolute;
+  top: -0.3rem;
+  right: -0.3rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.popup h2 {
+  color: #3498db;
+  text-align: center;
+  margin-bottom: 1rem;
+} 
+
+.fields {
+  position: relative;
+}
+
+.fields * {
+  margin-bottom: 1em;
+}
+
+.fields label:not(.status-label) {
+  display: block;
+  margin-bottom: .4em;
+}
+
+.fields input {
+  display: block;
+  width: 300px;
+  font-size: 17px;
+  padding: 7px 10px;
+  border: 1px solid transparent;
+  outline: none;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.fields input:focus {
+  border: 1px solid blue;
+}
+
+.select-container {
+  width: fit-content;
+  position: relative;
+}
+
+select {
+  background-color: #00000040;
+  border: 1px solid blue;
+  border-radius: 5px;
+  color: blue;
+  padding: 10px 17px 10px 7px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.select-container::after {
+  content: '🞃';
+  color: blue;
+  position: absolute;
+  top: 4px;
+  right: 3px;
+}
+
+#create-job, #update-job, .job button, #delete-job {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 8px;
+  border-radius: 5px;
+  position: relative;
+  float: right;
+}
+
+.job .buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.job #update-job {
+  background-color: #3498db;
+}
+
+.job #remove-job {
+  background-color: red;
+}
+
+.popup:last-child h2 {
+  font-size: 1.1rem;
+  color: #BF0603;
+  margin-bottom: 30px;
+}
+
+#delete-job {
+  background-color: red;
+  margin: 0;
+  float: right;
+}
+
+.no-jobs {
+  text-align: center;
+  margin-top: 50px;
+  color: grey;
+}
+
+/*.status-label {
+  display: block;
+  border: 1px solid red;
+  width: 80px;
+  height: 38px;
+  position: absolute;
+  z-index: 9999;
+}*/
